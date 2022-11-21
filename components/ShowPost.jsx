@@ -3,7 +3,7 @@ import { ExclamationCircleOutlined, DeleteOutlined } from '@ant-design/icons'
 import { useDispatch } from 'react-redux'
 import { deletePost } from '../features/userPostsSlice'
 import { useRouter } from 'next/router'
-import CommentDetails from '../utils/Comments'
+import PostInfo from '../utils/PostInfo'
 import styles from '../styles/Home.module.css'
 
 const ShowPost = ({ item }) => {
@@ -28,7 +28,7 @@ const ShowPost = ({ item }) => {
         });
     };
    
-    const {totalComments} = CommentDetails(item.post.id)
+    const {totalComments} = PostInfo(item.post.id)
     
     const toPageDetails = () => {
         router.push(`/PostDetails/${item.post.id}`)

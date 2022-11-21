@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 
- const CommentDetails = (id) => {
-    // console.log(id)
+ const PostInfo = (id) => {
+    
     const { userPosts } = useSelector((state) => state.posts)
 
     let postDetails = userPosts?.filter((val) => val.post.id == id)
@@ -21,4 +21,4 @@ import { useSelector } from "react-redux"
     return {postDetails,totalComments}
 }
 
-export default CommentDetails
+export default PostInfo

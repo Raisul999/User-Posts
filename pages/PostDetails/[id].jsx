@@ -1,12 +1,12 @@
 import { useRouter } from 'next/router'
 import ShowDetails from '../../components/ShowDetails'
-import CommentDetails from '../../utils/Comments'
+import PostInfo from '../../utils/PostInfo'
 
 const PostDetails = () => {
   const router = useRouter()  
   const postId = Number(router.query.id)
 
-  const {postDetails, totalComments} = CommentDetails(postId)
+  const {postDetails, totalComments} = PostInfo(postId)
   
   return (
     <div>
