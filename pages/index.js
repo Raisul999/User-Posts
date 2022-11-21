@@ -1,9 +1,10 @@
 import { Button } from 'antd'
 import { useSelector, useDispatch } from 'react-redux'
-import { fetchPosts } from '../features/userPostsSlice'
+import { fetchPosts, reset } from '../features/userPostsSlice'
 import { useEffect } from 'react'
 import ShowPost from '../components/ShowPost'
 import Spinner from '../components/Spinner/Spinner'
+import styles from '../styles/Home.module.css'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -14,6 +15,7 @@ const Home = () => {
     if (userPosts.length > 0) return
 
     dispatch(fetchPosts())
+
   }, [dispatch])
 
   if (isLoading) {
@@ -21,10 +23,19 @@ const Home = () => {
   }
 
   if (isError) {
-    return <div style={{ textAlign: "center", margin: "5rem" }}>
+    return <div className={styles.textCenter}>
       <h2>{message}</h2>
+      <Button
+        className={styles.mar}
+        type="primary"
+        danger
+        onClick={() => dispatch(reset())}
+      >
+        Reset
+      </Button>
     </div>
   }
+
 
   return (
     <>
@@ -38,10 +49,10 @@ const Home = () => {
               />
             )
           }
-        </div> : <div style={{ textAlign: "center", margin: "5rem" }} >
+        </div> : <div className={styles.textCenter} >
           <h2>No posts available</h2>
           <Button
-            style={{ margin: "1rem" }}
+            className={styles.mar}
             type="primary"
             danger
             onClick={() => window.location.reload()}

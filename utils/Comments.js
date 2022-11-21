@@ -10,8 +10,8 @@ import { useSelector } from "react-redux"
         comments: []
     }
 
-    for (let i = 0; i < userPosts.length; i++) {
-        if (id == userPosts[i].comment[0].postId) {
+    for (let i = 0; i < userPosts?.length; i++) {
+        if (id == userPosts[i].comment[0]?.postId) {
             totalComments = {
                 comments: userPosts[i].comment
             }

@@ -2,4 +2,38 @@
   padding: 0 2rem;
 }
 
+.cardSize{
+  width: 50rem; 
+  margin: 2rem 
+}
 
+.row{
+  display: flex; 
+  justify-content: center; 
+  align-items: center 
+}
+
+.left{
+  margin-left: .5rem 
+}
+
+.textCenter{
+  text-align: center;
+   margin: 5rem 
+}
+
+.navBg{
+  background: #037ffc;
+   height: 4rem; 
+   margin-top:0 
+}
+
+.icon{
+  color: white; 
+  margin:2rem; 
+  font-size:1.7rem
+}
+
+.mar{
+  margin: 1rem;
+}

@@ -1,24 +1,26 @@
 import { Card, Row } from 'antd'
-
+import { useRouter } from 'next/router'
+import styles from '../styles/Home.module.css'
 
 const ShowDetails = ({ postDetails, totalComments }) => {
 
+    const router = useRouter()
 
     return (
-        <div>
+        <>
             {postDetails.length > 0 ? <Row
                 gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}
-                style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                className={styles.row}
             >
                 <Card
-                    style={{ width: "50rem", margin: "2rem" }}
+                    className={styles.cardSize}
 
                 >
-                    <h2>{postDetails[0]?.user.name}</h2>
+                    <h2 onClick={() => router.push('/')}>{postDetails[0]?.user.name}</h2>
                     <h3>{postDetails[0]?.post.title}</h3>
                     <p>{postDetails[0]?.post.body}</p>
-                    
-                    <div style={{ marginLeft: ".5rem" }}>
+
+                    <div className={styles.left}>
                         <h3>Comments</h3>
                         {totalComments.comments.map((item, i) =>
                             <div key={i}>
@@ -29,13 +31,13 @@ const ShowDetails = ({ postDetails, totalComments }) => {
                     </div>
 
                 </Card>
-            </Row> : <div style={{ textAlign: "center", margin: "5rem" }}>
+            </Row> : <div className={styles.textCenter}>
                 <h2>Post Details Not Available</h2>
 
             </div>}
 
 
-        </div >
+        </>
     )
 }
 

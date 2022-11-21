@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux'
 import { deletePost } from '../features/userPostsSlice'
 import { useRouter } from 'next/router'
 import CommentDetails from '../utils/Comments'
+import styles from '../styles/Home.module.css'
 
 const ShowPost = ({ item }) => {
     const dispatch = useDispatch()
@@ -37,17 +38,17 @@ const ShowPost = ({ item }) => {
         <>
             <Row
                 gutter={{ xs: 8, sm: 16, md: 24, lg: 32 }}
-                style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                className={styles.row}
             >
                 <Card
-                    style={{ width: "50rem", margin: "2rem" }}
+                    className={styles.cardSize}
                 >
                     
-                    <h2 onClick={toPageDetails} style={{ cursor: "pointer" }}>{item.user.name}</h2>
+                    <h2 onClick={toPageDetails}>{item.user.name}</h2>
                     <h3>{item.post.title}</h3>
                     <p>{item.post.body}</p>
                     <p>{totalComments.comments.length} comments</p>
-                    
+
                     <Button onClick={showDeleteConfirm} type="primary" danger icon={<DeleteOutlined />} style={{ float: "right" }}></Button>
                 </Card>
             </Row>

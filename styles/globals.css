@@ -10,6 +10,10 @@ a {
   text-decoration: none;
 }
 
+h2{
+  cursor: pointer;
+}
+
 * {
   padding: 0;
   margin: 0;

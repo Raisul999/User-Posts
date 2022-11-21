@@ -17,15 +17,17 @@ export const fetchPosts = createAsyncThunk('fetch/posts', async (_, thunkAPI) =>
     try {
         post = await axios.get("https://jsonplaceholder.typicode.com/posts")
 
-        users = post.data?await axios.get("https://jsonplaceholder.typicode.com/users"):[]
+        post = post.data.length == 0 ? [] : post
 
-        comments = users.data?await axios.get("https://jsonplaceholder.typicode.com/comments"):[]
+        users = post.data ? await axios.get("https://jsonplaceholder.typicode.com/users") : []
+
+        comments = users.data ? await axios.get("https://jsonplaceholder.typicode.com/comments") : []
 
         post = post.data
         users = users.data
         comments = comments.data
 
-        for (let i = 0; i < post.length; i++) {
+        for (let i = 0; i < post?.length; i++) {
             merged.push({
                 post: { ...post[i] },
                 user: { ...(users.find((itmInner) => itmInner.id === post[i].userId)) },
@@ -37,7 +39,7 @@ export const fetchPosts = createAsyncThunk('fetch/posts', async (_, thunkAPI) =>
         return merged.slice(0, 20)
 
     } catch (error) {
-        const message = (error.response && error.response.data && error.response.data.message)|| error.message || error.toString();
+        const message = (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
         return thunkAPI.rejectWithValue(message)
     }
 })
@@ -46,6 +48,7 @@ export const userPostsSlice = createSlice({
     name: 'userPosts',
     initialState,
     reducers: {
+        reset: (state) => initialState,
         deletePost: (state, action) => {
             state.userPosts = state.userPosts.filter((item) => item.post.id !== action.payload.id)
         }
@@ -69,6 +72,6 @@ export const userPostsSlice = createSlice({
 
 })
 
-export const { deletePost } = userPostsSlice.actions
+export const { deletePost, reset } = userPostsSlice.actions
 
 export default userPostsSlice.reducer

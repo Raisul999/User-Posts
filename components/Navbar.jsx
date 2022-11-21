@@ -1,11 +1,12 @@
 import  Link from 'next/link'
+import styles from '../styles/Home.module.css'
 
 const Navbar = () => {
     return (
         <>
-            <div style={{ background: "#037ffc", height: "4rem", marginTop:0 }}>
+            <div className={styles.navBg}>
                 <h2>
-                    <Link href='/' style={{ color: "white", margin:"2rem", fontSize:"1.7rem" }}>Post Blogs</Link>
+                    <Link href='/' className={styles.icon}>Post Blogs</Link>
                 </h2>
             </div>
         </>
