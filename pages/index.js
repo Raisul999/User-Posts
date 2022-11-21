@@ -40,6 +40,7 @@ const Home = () => {
         </div> : <div style={{ textAlign: "center", margin: "5rem" }} >
           <h2>No posts available</h2>
           <Button
+            style={{margin:"1rem"}}
             type="primary"
             danger
             onClick={() => window.location.reload()}

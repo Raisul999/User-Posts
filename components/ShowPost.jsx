@@ -27,10 +27,8 @@ const ShowPost = ({ item }) => {
         });
     };
    
-    let results = CommentDetails(item.post.id)
-    let totalComments = results.totalComments
+    const {totalComments} = CommentDetails(item.post.id)
     
-
     const toPageDetails = () => {
         router.push(`/PostDetails/${item.post.id}`)
     }
@@ -44,14 +42,13 @@ const ShowPost = ({ item }) => {
                 <Card
                     style={{ width: "50rem", margin: "2rem" }}
                 >
-                    {/* <Avatar size={64} icon={<UserOutlined />} /> */}
+                    
                     <h2 onClick={toPageDetails} style={{ cursor: "pointer" }}>{item.user.name}</h2>
                     <h3>{item.post.title}</h3>
                     <p>{item.post.body}</p>
                     <p>{totalComments.comments.length} comments</p>
-                    <Button onClick={showDeleteConfirm} type="primary" danger icon={<DeleteOutlined />} style={{ float: "right" }}>
-
-                    </Button>
+                    
+                    <Button onClick={showDeleteConfirm} type="primary" danger icon={<DeleteOutlined />} style={{ float: "right" }}></Button>
                 </Card>
             </Row>
 

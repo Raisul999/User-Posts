@@ -6,17 +6,13 @@ const PostDetails = () => {
   const router = useRouter()  
   const postId = Number(router.query.id)
 
-  let results = CommentDetails(postId)
-  let postDetails = results.postDetails
-  let postComments = results.totalComments
+  const {postDetails, totalComments} = CommentDetails(postId)
   
- 
-
   return (
     <div>
       <ShowDetails
-        postComments={postComments}
         postDetails={postDetails}
+        totalComments={totalComments}
       />
     </div>
   )
